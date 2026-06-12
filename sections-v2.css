@@ -449,3 +449,119 @@
   .ft__top{ grid-template-columns:1fr; }
   .cta__btns .btn{ width:100%; }
 }
+
+/* ===================== CARTA DO FUNDADOR ===================== */
+.letter{ background:var(--surface); overflow:hidden; }
+.letter .tex{ opacity:.55; }
+.letter__card{
+  position:relative;
+  background:#fff;
+  border-radius:var(--radius-lg,16px);
+  box-shadow:0 4px 32px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.06);
+  padding:clamp(40px,6vw,72px) clamp(32px,5vw,64px);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:clamp(28px,4vw,52px);
+  align-items:flex-start;
+}
+.letter__mark{
+  flex:0 0 auto;
+  width:clamp(52px,5.5vw,72px);
+  padding-top:6px;
+}
+.letter__mark img{ width:100%; height:auto; display:block; }
+.letter__body{ display:flex; flex-direction:column; gap:22px; }
+.letter__hl{
+  font-size:clamp(1.55rem,2.5vw,2.15rem);
+  line-height:1.22;
+  color:var(--navy);
+  margin:0;
+}
+.letter__hl .mark{
+  color:var(--royal);
+  font-style:normal;
+  background:none;
+  padding:0;
+}
+.letter__text{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  font-size:1.02rem;
+  line-height:1.68;
+  color:var(--text);
+}
+.letter__text .mark{
+  background:linear-gradient(to right,rgba(17,192,113,.14),rgba(17,192,113,.06));
+  color:var(--green-deep,#0d7a4a);
+  padding:1px 5px;
+  border-radius:4px;
+}
+.letter__belief{
+  font-family:var(--font-display,var(--font-body));
+  font-size:clamp(1.05rem,1.5vw,1.26rem);
+  font-weight:650;
+  color:var(--navy);
+  line-height:1.4;
+  padding:18px 22px;
+  border-left:3px solid var(--green);
+  background:var(--surface);
+  border-radius:0 var(--radius-sm,8px) var(--radius-sm,8px) 0;
+  margin:0;
+}
+.letter__belief em{ font-style:normal; color:var(--royal); }
+.letter__proof{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.letter__proof li{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:.98rem;
+  font-weight:550;
+  color:var(--text);
+}
+.letter__pmk{
+  flex:0 0 22px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:var(--green);
+  display:grid;
+  place-items:center;
+  color:#fff;
+}
+.letter__pmk svg{ width:12px; height:12px; }
+.letter__foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:18px;
+  padding-top:22px;
+  border-top:1px solid var(--border,#e5e9f0);
+}
+.letter__sig{ display:flex; flex-direction:column; gap:3px; }
+.letter__signName{
+  font-family:var(--font-display,var(--font-body));
+  font-weight:700;
+  font-size:1.06rem;
+  color:var(--navy);
+}
+.letter__signRole{ font-size:.86rem; color:var(--muted); }
+.letter__cta{ display:flex; flex-wrap:wrap; gap:12px; }
+
+@media (max-width:720px){
+  .letter__card{ grid-template-columns:1fr; gap:24px; }
+  .letter__mark{ width:clamp(38px,10vw,52px); }
+}
+@media (max-width:560px){
+  .letter__foot{ flex-direction:column; align-items:flex-start; }
+  .letter__cta{ flex-direction:column; width:100%; }
+  .letter__cta .btn{ width:100%; justify-content:center; }
+}
