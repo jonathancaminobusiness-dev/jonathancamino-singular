@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "embla-carousel": "^8.6.0"
   }
 }

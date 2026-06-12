@@ -382,14 +382,17 @@
    CARROSSEL (mobile) — pontos hexagonais + efeito de foco
    ============================================================ */
 .car-dots{ display:none; }
+/* No desktop o viewport da Embla é transparente ao layout */
+.embla{ display:contents; }
 
 @media (max-width:880px){
-  .car{ display:flex; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory;
-    gap:14px; margin-inline:calc(-1 * var(--gutter));
-    padding:8px var(--gutter) 12px;
-    scrollbar-width:none; -webkit-overflow-scrolling:touch; }
-  .car::-webkit-scrollbar{ display:none; }
-  .car > *{ flex:0 0 min(78vw, 330px); scroll-snap-align:center;
+  /* viewport da Embla: recorta o overflow e sangra até as bordas */
+  .embla{ display:block; overflow:hidden;
+    margin-inline:calc(-1 * var(--gutter));
+    padding:8px var(--gutter) 12px; }
+  /* container (eixo de arrasto da Embla) */
+  .car{ display:flex; flex-wrap:nowrap; gap:14px; }
+  .car > *{ flex:0 0 min(78vw, 330px);
     transition:transform .35s cubic-bezier(.2,.7,.2,1), opacity .35s; }
   .frentes__grid.car > *{ flex-basis:min(86vw, 380px); }
   .fcard--wide{ grid-column:auto; min-height:340px; }
@@ -399,7 +402,9 @@
     border-radius:var(--radius); padding:24px 22px; }
   .nums__grid.car > .stat{ background:#fff; border:1px solid var(--border);
     border-radius:var(--radius); padding:24px 22px; }
-  .dif__grid.car{ margin-inline:calc(-1 * clamp(18px, 4vw, 40px)); padding-inline:clamp(18px, 4vw, 40px); }
+  /* sangria específica do painel de diferenciais */
+  .dif__panel .embla{ margin-inline:calc(-1 * clamp(18px, 4vw, 40px));
+    padding-inline:clamp(18px, 4vw, 40px); }
   .dif__grid.car > .difcard{ background:var(--surface); border:1px solid var(--border) !important;
     border-radius:var(--radius); padding:22px 20px !important; }
 
