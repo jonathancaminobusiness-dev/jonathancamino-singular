@@ -35,4 +35,63 @@
       window.open('https://wa.me/5521964135156?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     });
   }
+
+  /* ---------- Vídeo CTA: toca/pausa conforme o foco da seção ----------
+     Em foco  → reproduz (mudo por padrão; usuário ativa o som).
+     Fora     → pausa (corta o som).
+     De volta → retoma automaticamente no mesmo estado de som. */
+  var vsec = document.getElementById('video');
+  var vid = vsec && vsec.querySelector('.vcta__video');
+  if (vsec && vid) {
+    var sndBtn = vsec.querySelector('.vcta__play');
+    var userMuted = true;   // começa mudo; vira false após o 1º toque do usuário
+    var inView = false;
+
+    function reflect() {
+      vsec.classList.toggle('snd-on', !vid.muted);
+      vsec.classList.toggle('snd-off', vid.muted);
+      if (sndBtn) {
+        sndBtn.setAttribute('aria-label', vid.muted ? 'Ativar o som do vídeo' : 'Desativar o som do vídeo');
+        sndBtn.setAttribute('aria-pressed', vid.muted ? 'false' : 'true');
+      }
+    }
+
+    function play() {
+      var p = vid.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          // reprodução com som bloqueada → muta e tenta novamente
+          if (!vid.muted) { vid.muted = true; userMuted = true; reflect(); }
+          var p2 = vid.play();
+          if (p2 && p2.catch) p2.catch(function () {});
+        });
+      }
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        inView = en.isIntersecting && en.intersectionRatio >= 0.5;
+        if (inView) {
+          vid.muted = userMuted;
+          play();
+        } else if (!vid.paused) {
+          vid.pause();
+        }
+        reflect();
+      });
+    }, { threshold: [0, 0.5, 0.75] });
+    io.observe(vsec.querySelector('.vcta__media') || vsec);
+
+    if (sndBtn) {
+      sndBtn.addEventListener('click', function () {
+        vid.muted = !vid.muted;     // alterna o som
+        userMuted = vid.muted;      // memoriza para as próximas entradas
+        if (vid.paused) play();     // garante que está tocando
+        reflect();
+      });
+    }
+
+    vid.addEventListener('volumechange', reflect);
+    reflect();
+  }
 })();

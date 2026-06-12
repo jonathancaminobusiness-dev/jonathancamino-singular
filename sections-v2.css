@@ -331,37 +331,56 @@
   max-width:56ch; line-height:1.55; }
 
 /* vídeo central */
-.vcta__media{ position:relative; margin-top:44px; width:min(820px, 100%); aspect-ratio:16/9;
+.vcta__media{ position:relative; margin-top:44px; aspect-ratio:9/16;
+  height:min(74vh, 620px); width:auto; max-width:100%;
   border-radius:22px; overflow:visible; }
-.vcta__media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-  object-position:50% 16%; border-radius:22px;
-  filter:grayscale(1) contrast(1.08); opacity:.92;
+.vcta__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  object-position:50% 50%; border-radius:22px; background:#02052d; display:block;
   box-shadow:0 0 0 1.5px rgba(255,255,255,.18), 0 50px 100px -38px rgba(0,93,229,.65); }
-.vcta__grad{ position:absolute; inset:0; border-radius:22px;
-  background:linear-gradient(0deg, rgba(0,5,45,.88) 0%, rgba(0,5,45,.15) 38%, rgba(3,14,117,.25) 100%); }
+.vcta__grad{ position:absolute; inset:0; border-radius:22px; pointer-events:none;
+  background:linear-gradient(0deg, rgba(0,5,45,.78) 0%, rgba(0,5,45,.05) 30%, rgba(0,5,45,0) 55%, rgba(0,5,45,.42) 100%);
+  transition:opacity .45s ease; }
+/* com som ligado, suaviza o overlay para o vídeo respirar */
+.vcta.snd-on .vcta__grad{ opacity:.45; }
 .vcta__hexconf{ position:absolute; background:var(--accent); pointer-events:none;
   clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
 .vcta__hexconf--1{ width:18px; height:20px; left:-26px; top:-14px; transform:rotate(-10deg); }
 .vcta__hexconf--2{ width:11px; height:12px; left:-44px; top:26px; background:var(--royal-soft); }
 .vcta__hexconf--3{ width:15px; height:17px; right:-30px; top:-20px; background:var(--royal-soft); transform:rotate(14deg); }
-.vcta__play{ position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); z-index:2;
-  width:104px; height:117px; border:0; background:none; padding:0; cursor:pointer; }
+.vcta__play{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:3;
+  width:104px; height:117px; border:0; background:none; padding:0; cursor:pointer;
+  transition:left .45s cubic-bezier(.2,.7,.2,1), top .45s cubic-bezier(.2,.7,.2,1),
+    width .45s cubic-bezier(.2,.7,.2,1), height .45s cubic-bezier(.2,.7,.2,1); }
 .vp-hex{ position:absolute; inset:0; display:grid; place-items:center; color:#fff;
   background:linear-gradient(150deg, var(--green), var(--royal));
   clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
   transition:transform .3s cubic-bezier(.2,.7,.2,1); }
-.vp-hex svg{ width:36px; height:36px; margin-left:4px; }
+.vp-hex svg{ width:36px; height:36px; }
 .vcta__play:hover .vp-hex{ transform:scale(1.08); }
+/* alterna ícone mudo/som conforme o estado */
+.vp-ic--on{ display:none; }
+.vcta.snd-on .vp-ic--muted{ display:none; }
+.vcta.snd-on .vp-ic--on{ display:block; }
 .vp-ring{ position:absolute; inset:0; background:rgba(255,255,255,.32);
   clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
 @media (prefers-reduced-motion: no-preference){
-  .vp-ring{ animation:vp-pulse 2.6s cubic-bezier(.2,.6,.3,1) infinite; }
-  .vp-ring--2{ animation-delay:1.3s; }
+  .vcta.snd-off .vp-ring{ animation:vp-pulse 2.6s cubic-bezier(.2,.6,.3,1) infinite; }
+  .vcta.snd-off .vp-ring--2{ animation-delay:1.3s; }
 }
 @keyframes vp-pulse{ 0%{ transform:scale(1); opacity:.55; } 80%,100%{ transform:scale(1.75); opacity:0; } }
+/* com som ligado, o botão vira um controle discreto no canto */
+.vcta.snd-on .vcta__play{ left:auto; right:14px; top:auto; bottom:14px;
+  transform:none; width:48px; height:54px; }
+.vcta.snd-on .vp-ring{ display:none; }
+.vcta.snd-on .vp-hex svg{ width:20px; height:20px; }
+
 .vcta__cap{ position:absolute; left:0; right:0; bottom:18px; z-index:2;
   font-family:var(--font-display); font-stretch:118%; font-weight:600;
-  font-size:.92rem; letter-spacing:.02em; color:rgba(255,255,255,.85); }
+  font-size:.92rem; letter-spacing:.02em; color:rgba(255,255,255,.9);
+  text-shadow:0 1px 10px rgba(0,5,45,.6); transition:opacity .35s ease; }
+.vcta__cap--tap{ bottom:24px; }
+/* esconde a chamada de "ativar som" quando o som já está ligado */
+.vcta.snd-on .vcta__cap--tap{ opacity:0; pointer-events:none; }
 
 /* seta + ação */
 .vcta__arrow{ width:clamp(64px, 7vw, 96px); margin:10px 0 2px; color:var(--accent);
@@ -441,9 +460,11 @@
   .rodrigo__spacer{ display:none; }
   .rodrigo__ghost{ font-size:24rem; top:-2%; right:-8%; }
   .vcta__br{ display:none; }
-  .vcta__media{ aspect-ratio:16/10; }
-  .vcta__play{ width:76px; height:86px; }
+  .vcta__media{ aspect-ratio:9/16; height:min(68vh, 540px); }
+  .vcta__play{ width:84px; height:94px; }
+  .vcta.snd-on .vcta__play{ width:44px; height:50px; }
   .vcta__cap{ display:none; }
+  .vcta__cap--tap{ display:block; }
   .vcta__hexconf{ display:none; }
   .vcta__arrow{ transform:translateX(-16px); }
   .vcta__btn{ width:100%; justify-content:center; }

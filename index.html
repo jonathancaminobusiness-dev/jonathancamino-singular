@@ -434,16 +434,21 @@
       <span class="vcta__hexconf vcta__hexconf--1" aria-hidden="true"></span>
       <span class="vcta__hexconf vcta__hexconf--2" aria-hidden="true"></span>
       <span class="vcta__hexconf vcta__hexconf--3" aria-hidden="true"></span>
-      <img src="assets/rodrigo-bw.jpg" alt="Rodrigo Prevot, fundador da Singular" />
+      <video class="vcta__video" playsinline preload="metadata" loop muted
+             poster="assets/rodrigo-bw.jpg"
+             aria-label="Rodrigo Prevot explica a diferença entre um seguro vendido e um planejado">
+        <source src="assets/vsl-rodrigo.mp4" type="video/mp4" />
+      </video>
       <span class="vcta__grad" aria-hidden="true"></span>
-      <button class="vcta__play" type="button" aria-label="Vídeo em breve">
+      <button class="vcta__play" type="button" aria-label="Ativar o som do vídeo">
         <span class="vp-ring" aria-hidden="true"></span>
         <span class="vp-ring vp-ring--2" aria-hidden="true"></span>
         <span class="vp-hex">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z"></path></svg>
+          <svg class="vp-ic vp-ic--muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor" stroke="none"></path><path d="m16 9 5 6M21 9l-5 6"></path></svg>
+          <svg class="vp-ic vp-ic--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor" stroke="none"></path><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a9 9 0 0 1 0 12"></path></svg>
         </span>
       </button>
-      <span class="vcta__cap">— direto do fundador, sem roteiro de vendas</span>
+      <span class="vcta__cap vcta__cap--tap">Toque para ativar o som</span>
     </div>
 
     <svg class="vcta__arrow reveal" data-d="2" viewBox="0 0 120 92" aria-hidden="true">
