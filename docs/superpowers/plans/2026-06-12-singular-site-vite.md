@@ -1,6 +1,6 @@
 # Singular Site — Vite + Vercel Deploy — Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Montar o site Singular com Vite, versionar no GitHub em jonathancaminobusiness-dev/jonathancamino-singular e fazer deploy no Vercel.
 
@@ -36,7 +36,7 @@
 - Create: `vite.config.js`
 - Create: `.gitignore`
 
-- [ ] **Step 1: Criar package.json**
+- [x] **Step 1: Criar package.json**
 
 ```bash
 cat > /Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/package.json << 'EOF'
@@ -56,7 +56,7 @@ cat > /Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/package.js
 EOF
 ```
 
-- [ ] **Step 2: Criar vite.config.js**
+- [x] **Step 2: Criar vite.config.js**
 
 ```bash
 cat > /Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/vite.config.js << 'EOF'
@@ -66,7 +66,7 @@ export default defineConfig({})
 EOF
 ```
 
-- [ ] **Step 3: Criar .gitignore**
+- [x] **Step 3: Criar .gitignore**
 
 ```bash
 cat > "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/.gitignore" << 'EOF'
@@ -77,7 +77,7 @@ dist/
 EOF
 ```
 
-- [ ] **Step 4: Verificar arquivos criados**
+- [x] **Step 4: Verificar arquivos criados**
 
 ```bash
 ls -la /Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/
@@ -92,19 +92,19 @@ Esperado: `package.json`, `vite.config.js`, `.gitignore` listados.
 **Files:**
 - Create: `public/assets/` (18 arquivos)
 
-- [ ] **Step 1: Criar diretório public/assets/**
+- [x] **Step 1: Criar diretório public/assets/**
 
 ```bash
 mkdir -p "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/public/assets"
 ```
 
-- [ ] **Step 2: Extrair o zip**
+- [x] **Step 2: Extrair o zip**
 
 ```bash
 unzip -o "/Users/joncarvv/Downloads/MAG (Rodrigo).zip" -d "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/public/"
 ```
 
-- [ ] **Step 3: Verificar extração**
+- [x] **Step 3: Verificar extração**
 
 ```bash
 ls "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/public/assets/"
@@ -127,7 +127,7 @@ sol-saude.jpg     sol-viagem.jpg    sol-vida.jpg
 **Files:**
 - Create: `brand-v2.css`, `sections-v2.css`, `motion.js`, `ui-v2.js`, `image-slot.js`
 
-- [ ] **Step 1: Copiar os 5 arquivos**
+- [x] **Step 1: Copiar os 5 arquivos**
 
 ```bash
 WD="/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular"
@@ -140,7 +140,7 @@ cp "$DL/ui-v2.js"         "$WD/ui-v2.js"
 cp "$DL/image-slot.js"    "$WD/image-slot.js"
 ```
 
-- [ ] **Step 2: Verificar**
+- [x] **Step 2: Verificar**
 
 ```bash
 ls /Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/*.css \
@@ -156,14 +156,14 @@ Esperado: `brand-v2.css`, `sections-v2.css`, `image-slot.js`, `motion.js`, `ui-v
 **Files:**
 - Create: `index.html`
 
-- [ ] **Step 1: Copiar Singular.html como index.html**
+- [x] **Step 1: Copiar Singular.html como index.html**
 
 ```bash
 cp "/Users/joncarvv/Downloads/Singular.html" \
    "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/index.html"
 ```
 
-- [ ] **Step 2: Remover o bloco `<template id="__bundler_thumbnail">`**
+- [x] **Step 2: Remover o bloco `<template id="__bundler_thumbnail">`**
 
 Localizar e remover as linhas 17–26 do index.html — o bloco completo:
 ```html
@@ -194,7 +194,7 @@ print('template block removed')
 "
 ```
 
-- [ ] **Step 3: Remover `<div id="tweaks-root"></div>`**
+- [x] **Step 3: Remover `<div id="tweaks-root"></div>`**
 
 ```bash
 WD="/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular"
@@ -208,7 +208,7 @@ print('tweaks-root removed')
 "
 ```
 
-- [ ] **Step 4: Remover scripts React, ReactDOM, Babel e tweaks JSX**
+- [x] **Step 4: Remover scripts React, ReactDOM, Babel e tweaks JSX**
 
 Os 5 scripts a remover são:
 ```html
@@ -239,7 +239,7 @@ print('react/babel/tweaks scripts removed')
 "
 ```
 
-- [ ] **Step 5: Verificar que o index.html não contém referências indesejadas**
+- [x] **Step 5: Verificar que o index.html não contém referências indesejadas**
 
 ```bash
 grep -n "tweaks\|unpkg\|babel\|react\|__bundler" \
@@ -248,7 +248,7 @@ grep -n "tweaks\|unpkg\|babel\|react\|__bundler" \
 
 Esperado: **nenhuma linha** retornada (saída vazia = OK).
 
-- [ ] **Step 6: Verificar que os scripts corretos ainda estão presentes**
+- [x] **Step 6: Verificar que os scripts corretos ainda estão presentes**
 
 ```bash
 grep -n "image-slot\|motion\|ui-v2" \
@@ -269,7 +269,7 @@ Esperado:
 
 **Files:** nenhum arquivo novo — instala `node_modules/`
 
-- [ ] **Step 1: Instalar dependências**
+- [x] **Step 1: Instalar dependências**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && npm install
@@ -277,7 +277,7 @@ cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && npm inst
 
 Esperado: `added N packages` sem erros.
 
-- [ ] **Step 2: Verificar build de produção**
+- [x] **Step 2: Verificar build de produção**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && npm run build
@@ -291,7 +291,7 @@ dist/assets/...
 ```
 Sem erros.
 
-- [ ] **Step 3: Verificar que assets foram copiados para dist/**
+- [x] **Step 3: Verificar que assets foram copiados para dist/**
 
 ```bash
 ls "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular/dist/assets/" | head -20
@@ -305,7 +305,7 @@ Esperado: os 18 arquivos de imagem/svg listados em `dist/assets/`.
 
 **Files:** `.git/` criado
 
-- [ ] **Step 1: Inicializar repositório git**
+- [x] **Step 1: Inicializar repositório git**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && git init -b main
@@ -313,7 +313,7 @@ cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && git init
 
 Esperado: `Initialized empty Git repository in .../jonathancamino-singular/.git/`
 
-- [ ] **Step 2: Staging de todos os arquivos (exceto node_modules e dist)**
+- [x] **Step 2: Staging de todos os arquivos (exceto node_modules e dist)**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && \
@@ -322,7 +322,7 @@ git add index.html brand-v2.css sections-v2.css motion.js ui-v2.js image-slot.js
         public/ docs/
 ```
 
-- [ ] **Step 3: Verificar staging**
+- [x] **Step 3: Verificar staging**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && git status
@@ -330,7 +330,7 @@ cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && git stat
 
 Esperado: todos os arquivos em verde (staged), `node_modules/` e `dist/` não aparecem.
 
-- [ ] **Step 4: Commit inicial**
+- [x] **Step 4: Commit inicial**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && \
@@ -351,7 +351,7 @@ Esperado: `[main (root-commit) XXXXXXX] feat: site Singular com Vite — landing
 
 ## Task 7: Criar repo no GitHub e fazer push
 
-- [ ] **Step 1: Criar repositório público no GitHub**
+- [x] **Step 1: Criar repositório público no GitHub**
 
 ```bash
 gh repo create jonathancaminobusiness-dev/jonathancamino-singular \
@@ -361,7 +361,7 @@ gh repo create jonathancaminobusiness-dev/jonathancamino-singular \
 
 Esperado: URL do repositório criado impressa no terminal.
 
-- [ ] **Step 2: Adicionar remote origin e fazer push**
+- [x] **Step 2: Adicionar remote origin e fazer push**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && \
@@ -371,7 +371,7 @@ git push -u origin main
 
 Esperado: `Branch 'main' set up to track remote branch 'main' from 'origin'.`
 
-- [ ] **Step 3: Verificar repositório no GitHub**
+- [x] **Step 3: Verificar repositório no GitHub**
 
 ```bash
 gh repo view jonathancaminobusiness-dev/jonathancamino-singular
@@ -383,13 +383,13 @@ Esperado: descrição, visibilidade pública, branch main com commits.
 
 ## Task 8: Deploy no Vercel
 
-- [ ] **Step 1: Instalar Vercel CLI se necessário**
+- [x] **Step 1: Instalar Vercel CLI se necessário**
 
 ```bash
 npx vercel --version 2>/dev/null || echo "vercel CLI not found, will use npx"
 ```
 
-- [ ] **Step 2: Fazer deploy de produção**
+- [x] **Step 2: Fazer deploy de produção**
 
 ```bash
 cd "/Users/joncarvv/Desktop/Clients/Rodrigo/jonathancamino-singular" && \
@@ -404,13 +404,13 @@ O Vercel detecta Vite automaticamente:
 
 Esperado: linha final com `✅ Production: https://jonathancamino-singular-XXXXX.vercel.app`
 
-- [ ] **Step 3: Anotar a URL de produção**
+- [x] **Step 3: Anotar a URL de produção**
 
 Salvar a URL retornada pelo Vercel. Formatos possíveis:
 - `https://jonathancamino-singular.vercel.app`
 - `https://jonathancamino-singular-jonathancaminobusiness-dev.vercel.app`
 
-- [ ] **Step 4: Verificar site ao vivo**
+- [x] **Step 4: Verificar site ao vivo**
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}" "$(npx vercel ls --prod 2>/dev/null | grep jonathancamino-singular | awk '{print $2}' | head -1)"
@@ -422,10 +422,10 @@ Esperado: `200`
 
 ## Critérios de sucesso (checklist final)
 
-- [ ] `npm run build` termina sem erros
-- [ ] `dist/assets/` contém os 18 arquivos de imagem
-- [ ] `index.html` não contém referências a `tweaks`, `unpkg`, `babel`, `react`
-- [ ] `index.html` mantém `image-slot.js`, `motion.js`, `ui-v2.js`
-- [ ] Repo visível em `github.com/jonathancaminobusiness-dev/jonathancamino-singular`
-- [ ] URL Vercel retorna HTTP 200
-- [ ] Site abre no navegador com logo, fotos e seções visíveis
+- [x] `npm run build` termina sem erros
+- [x] `dist/assets/` contém os 18 arquivos de imagem
+- [x] `index.html` não contém referências a `tweaks`, `unpkg`, `babel`, `react`
+- [x] `index.html` mantém `image-slot.js`, `motion.js`, `ui-v2.js`
+- [x] Repo visível em `github.com/jonathancaminobusiness-dev/jonathancamino-singular`
+- [x] URL Vercel retorna HTTP 200
+- [x] Site abre no navegador com logo, fotos e seções visíveis
