@@ -8,7 +8,9 @@ export default function contentPlugin() {
     name: 'singular-content',
     transformIndexHtml: {
       order: 'pre',
-      handler(html) {
+      handler(html, ctx) {
+        // injeta conteúdo apenas na home; o painel carrega o content.json via import
+        if (ctx && ctx.path && ctx.path.includes('admin')) return html
         let content
         try { content = JSON.parse(readFileSync('content.json', 'utf8')) }
         catch (e) { throw new Error(`[singular-content] content.json invalido: ${e.message}`) }
