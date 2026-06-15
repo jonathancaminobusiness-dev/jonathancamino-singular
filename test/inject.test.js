@@ -102,6 +102,12 @@ describe('applyContent — seguranca de URL', () => {
     expect(d.querySelector('a').getAttribute('href')).toBe('https://singular.com.br')
   })
 
+  it('bloqueia javascript: ofuscado com whitespace', () => {
+    const d = doc('<a data-edit-href="k" href="">x</a>')
+    applyContent(d, { k: 'java\tscript:alert(1)' })
+    expect(d.querySelector('a').getAttribute('href')).toBe('')
+  })
+
   it('wa builder com numero com espacos — produz URL somente com digitos', () => {
     const d = doc('<a data-edit-wa="hero.msg" href="">x</a>')
     applyContent(d, { contato: { whatsapp: '55 21 99' }, hero: { msg: 'Ola' } })

@@ -1,5 +1,7 @@
 import { sanitize } from '../inject.js'
 
+let _cssModeSet = false
+
 // Limpa o HTML do contenteditable para a allowlist e normaliza <i> → <em>
 // (no design, itálico = destaque, estilizado via <em>; execCommand gera <i> no Chrome).
 export function cleanRich(html) {
@@ -36,7 +38,7 @@ export function createRichEditor({ value = '', onInput }) {
     })
     return b
   }
-  document.execCommand && document.execCommand('styleWithCSS', false, false)
+  if (!_cssModeSet && document.execCommand) { document.execCommand('styleWithCSS', false, false); _cssModeSet = true }
   bar.appendChild(mkBtn('N', 'bold'))
   bar.appendChild(mkBtn('Destaque', 'italic')) // italic gera <em>/<i>; CSS do site pinta <em> como destaque
 

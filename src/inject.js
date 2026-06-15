@@ -50,8 +50,8 @@ export function sanitize(doc, html) {
 }
 
 // Bloqueia esquemas perigosos em href/src (javascript:, vbscript:, data:text/html).
-function isUnsafeUrl(val) {
-  const s = String(val).trim().toLowerCase().replace(/[ -]/g, '')
+export function isUnsafeUrl(val) {
+  const s = String(val).trim().toLowerCase().replace(/[\s-]/g, '')
   return /^(javascript|vbscript):/.test(s) || /^data:text\/html/.test(s)
 }
 

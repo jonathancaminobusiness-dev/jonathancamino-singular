@@ -5,8 +5,13 @@ import { applyContent } from '../inject.js'
 export function createPreview(iframe, state, { debounce = 120 } = {}) {
   let t = null
   const apply = () => {
-    const doc = iframe.contentDocument
-    if (doc) applyContent(doc, state.get())
+    try {
+      const doc = iframe.contentDocument
+      if (doc) applyContent(doc, state.get())
+    } catch (e) {
+      // iframe navegou para outra origem (ex.: clique em link externo) — restaura
+      try { iframe.src = '/' } catch (_) {}
+    }
   }
   const schedule = () => {
     if (debounce === 0) return apply()

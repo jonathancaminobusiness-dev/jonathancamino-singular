@@ -10,7 +10,9 @@ export function saveDraft(state) {
 
 export function loadDraft() {
   const raw = localStorage.getItem(KEY)
-  return raw ? JSON.parse(raw) : null
+  if (!raw) return null
+  try { return JSON.parse(raw) }
+  catch (e) { localStorage.removeItem(KEY); return null }
 }
 
 export function clearDraft() {

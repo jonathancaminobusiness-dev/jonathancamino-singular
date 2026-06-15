@@ -1,12 +1,8 @@
 import { createRichEditor } from './richeditor.js'
-
-function isUnsafeUrl(val) {
-  const s = String(val).trim().toLowerCase().replace(/[\s-]/g, '')
-  return /^(javascript|vbscript):/.test(s) || /^data:text\/html/.test(s)
-}
+import { isUnsafeUrl } from '../inject.js'
 
 export function createWidget(field, state) {
-  const wrap = document.createElement('label')
+  const wrap = document.createElement(field.type === 'rich' ? 'div' : 'label')
   wrap.className = 'pa-field'
   const cap = document.createElement('span')
   cap.className = 'pa-field__label'

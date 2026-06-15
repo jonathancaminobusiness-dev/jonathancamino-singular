@@ -23,4 +23,10 @@ describe('draft', () => {
     saveDraft(s); clearDraft()
     expect(loadDraft()).toBeNull()
   })
+
+  it('rascunho corrompido é descartado (retorna null)', () => {
+    localStorage.setItem('singular.draft.v1', '{not valid json')
+    expect(loadDraft()).toBeNull()
+    expect(localStorage.getItem('singular.draft.v1')).toBeNull()
+  })
 })
