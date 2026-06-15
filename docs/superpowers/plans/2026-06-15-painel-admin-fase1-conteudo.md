@@ -30,8 +30,8 @@ test/schema.test.js        # consistência schema × index.html (novo)
 ```
 
 **Convenção de anotação (contrato do injetor):**
-- `data-edit="chave"` → define o conteúdo do elemento via **innerHTML sanitizado** (allowlist: `b, strong, em, i, br, span`). Preserva os `<em>`/`<b>` já existentes no design.
-- `data-edit-<attr>="chave"` → define o atributo `<attr>` do elemento. Ex.: `data-edit-href`, `data-edit-src`, `data-edit-alt`.
+- `data-edit="chave"` → define o conteúdo do elemento via **innerHTML sanitizado** (allowlist: `b, strong, em, i, br, span`). Preserva os `<em>`/`<b>` já existentes no design. **Como faz innerHTML, só pode ser usado em elementos cujo conteúdo é só texto** — para elementos com ícone SVG/decoração, embrulhar o texto num `<span data-edit="chave">` (ver Regra Crítica na Task 5).
+- `data-edit-<attr>="chave"` → define o atributo `<attr>` do elemento. Ex.: `data-edit-href`, `data-edit-src`, `data-edit-alt`. (Seguro em qualquer elemento — não mexe nos filhos.)
 - `data-edit-wa="chave"` → monta um link `https://wa.me/{contato.whatsapp}?text={encode(valor)}` e o coloca no `href`. (Permite trocar o número uma vez em `contato.whatsapp` e propagar para todos os CTAs.)
 - Chaves são caminhos pontilhados no `content.json` (ex.: `hero.titulo`, `solucoes.cards.0.titulo`).
 
@@ -392,7 +392,37 @@ git commit -m "feat: extractContent (inverso do injetor) + round-trip"
 **Files:**
 - Modify: `index.html`
 
-Adicionar os atributos abaixo aos elementos correspondentes. **Não alterar texto, estrutura, classes ou CSS** — apenas acrescentar atributos. Tabela de mapeamento (seção → elemento → atributo):
+Adicionar as anotações abaixo aos elementos correspondentes. **Não alterar o texto visível, classes ou CSS.** Tabela de mapeamento (seção → elemento → atributo).
+
+### REGRA CRÍTICA — texto com ícone/decoração (ler antes de tudo)
+
+O injetor faz `el.innerHTML = ...` no elemento que tem `data-edit`. Isso **apaga os filhos** do elemento. Portanto:
+
+- **Elemento só com texto** (e tags inline `em/b/i/strong/span/br`) — ex.: `<h1>`, `<p>`, `<h3>`, `<li>`, `.hero__lead`, `.letter__hl`: colocar `data-edit="chave"` **direto no elemento**. As tags inline existentes (`<em>`, `<b>`) são preservadas pela allowlist do sanitizador.
+- **Elemento com filhos decorativos** (SVG de ícone, seta `→`, etc.) — ex.: botões `<a class="btn">`, links da topbar/rodapé, itens do `.mnav`: **NÃO** colocar `data-edit` no elemento. Em vez disso, **embrulhar apenas o texto do rótulo num `<span data-edit="chave">…</span>`**, deixando o SVG/seta como irmão.
+  - Atributos (`data-edit-href`, `data-edit-src`, `data-edit-alt`, `data-edit-wa`) **continuam no elemento original** (eles trocam atributos, não mexem nos filhos).
+  - Exemplo (botão WhatsApp do hero):
+    ```html
+    <!-- ANTES -->
+    <a class="btn btn--wa btn--lg" href="https://wa.me/5521964135156?text=...">
+      <svg ...>...</svg>
+      Quero meu diagnóstico gratuito
+    </a>
+    <!-- DEPOIS (wa no <a>; texto embrulhado em span) -->
+    <a class="btn btn--wa btn--lg" data-edit-wa="hero.cta_msg" href="https://wa.me/5521964135156?text=...">
+      <svg ...>...</svg>
+      <span data-edit="hero.cta">Quero meu diagnóstico gratuito</span>
+    </a>
+    ```
+  - Exemplo (link do menu mobile com seta):
+    ```html
+    <!-- ANTES --> <a href="#solucoes">Soluções <span class="go">→</span></a>
+    <!-- DEPOIS --> <a href="#solucoes"><span data-edit="nav.solucoes">Soluções</span> <span class="go">→</span></a>
+    ```
+
+Quando a tabela disser `botão X → data-edit="k" + data-edit-wa="k_msg"`, **interprete** como: `data-edit-wa` no `<a>` e o rótulo num `<span data-edit="k">`. Para links de navegação que são texto puro (no `.hdr__nav`), `data-edit` direto basta; no `.mnav` (têm a seta) use o span. Header e menu mobile compartilham as mesmas chaves `nav.*` (mesmo rótulo nos dois).
+
+### Tabela de mapeamento (seção → elemento → atributo):
 
 **SEO / contato (topbar + head):**
 - `<title>` → `data-edit="seo.titulo"`
@@ -459,22 +489,29 @@ Editar `index.html` conforme a tabela. Não tocar em SVGs decorativos, ícones, 
 Run: `npm run build`
 Expected: `✓ built`. O site renderiza igual (os `data-edit*` são atributos inertes).
 
-- [ ] **Step 3: Verificar que não houve mudança visível de conteúdo**
+- [ ] **Step 3: Verificar que o texto visível não mudou (paridade de texto)**
 
-Run:
+Compara o texto visível (todas as tags removidas — então `data-edit`, spans-wrapper e atributos somem) entre o `index.html` commitado antes desta task e o atual:
 ```bash
-git stash && npm run build && cp dist/index.html /tmp/antes.html && git stash pop && npm run build
 python3 - <<'PY'
-import re
-def texts(p):
-    h=open(p).read()
-    h=re.sub(r'data-edit[^=]*="[^"]*"','',h)  # ignora os novos atributos
-    return re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',h)).strip()
-a=texts('/tmp/antes.html'); b=texts('dist/index.html')
-print('IDÊNTICO' if a==b else 'DIFERENÇA DETECTADA')
+import re, subprocess
+def texts(s):
+    return re.sub(r'\s+',' ', re.sub(r'<[^>]+>',' ', s)).strip()
+antes = subprocess.check_output(['git','show','HEAD:index.html'], text=True)
+atual = open('index.html').read()
+a, b = texts(antes), texts(atual)
+if a==b:
+    print('IDÊNTICO')
+else:
+    import difflib
+    print('DIFERENÇA DETECTADA:')
+    for line in difflib.unified_diff(a.split('. '), b.split('. '), lineterm='')[:40]:
+        print(line)
 PY
 ```
-Expected: `IDÊNTICO` (o texto visível não mudou; só foram adicionados atributos).
+Expected: `IDÊNTICO`. Os `<span>` que embrulham rótulos somem ao remover tags, então o texto visível deve bater exatamente. Se acusar diferença, há um rótulo alterado/duplicado/perdido — corrigir antes de commitar.
+
+> **Verificação visual (feita pelo controlador após esta task):** como embrulhar texto em `<span>` pode, em tese, afetar layout (flex/gap em botões), o controlador roda o preview e compara um screenshot 1280×900 com o site atual antes de aprovar. O implementador não precisa rodar o preview, mas deve garantir que nenhum `<span>` foi inserido em elemento cujo CSS dependa do filho ser nó de texto direto (na dúvida, reportar como DONE_WITH_CONCERNS listando os elementos embrulhados).
 
 - [ ] **Step 4: Commit**
 
