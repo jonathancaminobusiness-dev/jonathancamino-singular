@@ -1,0 +1,25 @@
+{
+  "name": "Singular · Consultoria em Seguros e Patrimônio",
+  "short_name": "Singular",
+  "description": "Consultoria personalizada em seguros, investimentos, patrimônio e sucessão com Rodrigo Prevot.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#00052D",
+  "theme_color": "#00052D",
+  "icons": [
+    {
+      "src": "/assets/mark-blue.png",
+      "sizes": "302x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logo-mag.png",
+      "sizes": "1258x1600",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
