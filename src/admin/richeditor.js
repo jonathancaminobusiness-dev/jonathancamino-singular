@@ -1,8 +1,17 @@
 import { sanitize } from '../inject.js'
 
-// Limpa o HTML do contenteditable para a allowlist (reusa o sanitizador da Fase 1).
+// Limpa o HTML do contenteditable para a allowlist e normaliza <i> → <em>
+// (no design, itálico = destaque, estilizado via <em>; execCommand gera <i> no Chrome).
 export function cleanRich(html) {
-  return sanitize(document, html)
+  const clean = sanitize(document, html)
+  const tpl = document.createElement('template')
+  tpl.innerHTML = clean
+  tpl.content.querySelectorAll('i').forEach((i) => {
+    const em = document.createElement('em')
+    while (i.firstChild) em.appendChild(i.firstChild)
+    i.replaceWith(em)
+  })
+  return tpl.innerHTML
 }
 
 // Cria um mini-editor: toolbar (Negrito/Destaque) + área contenteditable.
