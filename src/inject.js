@@ -1,3 +1,5 @@
+import { collectEditEls } from './edit-attrs.js'
+
 // Allowlist de tags inline permitidas nos campos de texto.
 const ALLOWED = new Set(['B', 'STRONG', 'EM', 'I', 'BR', 'SPAN'])
 
@@ -47,10 +49,14 @@ function sanitize(doc, html) {
   return tpl.innerHTML
 }
 
+// Bloqueia esquemas perigosos em href/src (javascript:, vbscript:, data:text/html).
+function isUnsafeUrl(val) {
+  const s = String(val).trim().toLowerCase().replace(/[ -]/g, '')
+  return /^(javascript|vbscript):/.test(s) || /^data:text\/html/.test(s)
+}
+
 export function applyContent(doc, content) {
-  const candidates = Array.from(doc.querySelectorAll('*')).filter(
-    el => Array.from(el.attributes).some(a => a.name === 'data-edit' || a.name.startsWith('data-edit-'))
-  )
+  const candidates = collectEditEls(doc)
   for (const el of candidates) {
     // texto / innerHTML
     if (el.hasAttribute('data-edit')) {
@@ -62,7 +68,10 @@ export function applyContent(doc, content) {
       const msg = getPath(content, el.getAttribute('data-edit-wa'))
       const num = getPath(content, 'contato.whatsapp')
       if (msg != null && num != null) {
-        el.setAttribute('href', `https://wa.me/${num}?text=${encodeURIComponent(String(msg))}`)
+        const digits = String(num).replace(/\D/g, '')
+        if (digits) {
+          el.setAttribute('href', `https://wa.me/${digits}?text=${encodeURIComponent(String(msg))}`)
+        }
       }
     }
     // atributos genéricos data-edit-<attr> (exceto o caso especial -wa)
@@ -70,7 +79,10 @@ export function applyContent(doc, content) {
       if (!attr.name.startsWith('data-edit-') || attr.name === 'data-edit-wa') continue
       const target = attr.name.slice('data-edit-'.length) // ex.: "href", "src", "alt"
       const val = getPath(content, attr.value)
-      if (val != null) el.setAttribute(target, String(val))
+      if (val != null) {
+        if ((target === 'href' || target === 'src') && isUnsafeUrl(val)) continue
+        el.setAttribute(target, String(val))
+      }
     }
   }
 }

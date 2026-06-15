@@ -83,6 +83,33 @@ describe('applyContent — segurança do sanitizador', () => {
   })
 })
 
+describe('applyContent — seguranca de URL', () => {
+  it('bloqueia javascript: em data-edit-href (nao seta o atributo)', () => {
+    const d = doc('<a data-edit-href="k" href="">x</a>')
+    applyContent(d, { k: 'javascript:alert(1)' })
+    expect(d.querySelector('a').getAttribute('href')).toBe('')
+  })
+
+  it('bloqueia data:text/html em data-edit-src (nao seta o atributo)', () => {
+    const d = doc('<img data-edit-src="k" src="">')
+    applyContent(d, { k: 'data:text/html,<script>alert(1)</script>' })
+    expect(d.querySelector('img').getAttribute('src')).toBe('')
+  })
+
+  it('permite https:// normal em data-edit-href (caso positivo)', () => {
+    const d = doc('<a data-edit-href="k" href="">x</a>')
+    applyContent(d, { k: 'https://singular.com.br' })
+    expect(d.querySelector('a').getAttribute('href')).toBe('https://singular.com.br')
+  })
+
+  it('wa builder com numero com espacos — produz URL somente com digitos', () => {
+    const d = doc('<a data-edit-wa="hero.msg" href="">x</a>')
+    applyContent(d, { contato: { whatsapp: '55 21 99' }, hero: { msg: 'Ola' } })
+    expect(d.querySelector('a').getAttribute('href'))
+      .toBe('https://wa.me/552199?text=Ola')
+  })
+})
+
 describe('applyContent — atributos', () => {
   it('define atributos via data-edit-<attr>', () => {
     const d = doc('<img data-edit-src="foto" data-edit-alt="legenda" src="" alt="">')

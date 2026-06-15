@@ -1,6 +1,6 @@
 // Esquema de conteúdo editável do site Singular.
 // Cada entrada: { key, label, type, section }
-// type: 'text' | 'rich' | 'image' | 'link' | 'wa'
+// type: 'text' | 'rich' | 'image' | 'video' | 'link' | 'wa'
 
 export const SCHEMA = [
   // ─── SEO ───────────────────────────────────────────────────────────────────
@@ -55,7 +55,7 @@ export const SCHEMA = [
   { section: 'Vídeo', key: 'video.titulo',    label: 'Título da seção de vídeo',        type: 'rich'  },
   { section: 'Vídeo', key: 'video.subtitulo', label: 'Subtítulo da seção de vídeo',     type: 'text'  },
   { section: 'Vídeo', key: 'video.poster',    label: 'Imagem de capa do vídeo',         type: 'image' },
-  { section: 'Vídeo', key: 'video.arquivo',   label: 'Arquivo de vídeo (MP4)',          type: 'image' },
+  { section: 'Vídeo', key: 'video.arquivo',   label: 'Arquivo de vídeo (MP4)',          type: 'video' },
   { section: 'Vídeo', key: 'video.cta_msg',   label: 'Mensagem WhatsApp (vídeo CTA)',   type: 'wa'    },
   { section: 'Vídeo', key: 'video.cta',       label: 'Texto do botão (vídeo)',          type: 'text'  },
   { section: 'Vídeo', key: 'video.micro1',    label: 'Micro-cópia 1 (vídeo)',           type: 'text'  },
@@ -178,12 +178,6 @@ export const SCHEMA = [
   { section: 'Flutuante', key: 'float.msg', label: 'Mensagem WhatsApp (botão flutuante)', type: 'wa' },
 ]
 
-/**
- * Retorna a lista plana de chaves do schema, incluindo 'contato.whatsapp'
- * se houver pelo menos um campo do tipo 'wa' (comportamento determinístico).
- */
 export function schemaKeys() {
-  const keys = SCHEMA.map(f => f.key)
-  if (SCHEMA.some(f => f.type === 'wa')) keys.push('contato.whatsapp')
-  return [...new Set(keys)]
+  return [...new Set(SCHEMA.map((f) => f.key))]
 }

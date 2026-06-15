@@ -9,7 +9,9 @@ export default function contentPlugin() {
     transformIndexHtml: {
       order: 'pre',
       handler(html) {
-        const content = JSON.parse(readFileSync('content.json', 'utf8'))
+        let content
+        try { content = JSON.parse(readFileSync('content.json', 'utf8')) }
+        catch (e) { throw new Error(`[singular-content] content.json invalido: ${e.message}`) }
         const dom = new JSDOM(html)
         applyContent(dom.window.document, content)
         return dom.serialize()

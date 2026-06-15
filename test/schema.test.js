@@ -2,14 +2,13 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { JSDOM } from 'jsdom'
 import { SCHEMA, schemaKeys } from '../content.schema.js'
+import { collectEditEls } from '../src/edit-attrs.js'
 
 function annotatedKeys() {
   const html = readFileSync('index.html', 'utf8')
   const { document } = new JSDOM(html).window
   const keys = new Set()
-  const els = Array.from(document.querySelectorAll('*')).filter(el =>
-    Array.from(el.attributes).some(a => a.name === 'data-edit' || a.name.startsWith('data-edit-'))
-  )
+  const els = collectEditEls(document)
   for (const el of els) {
     if (el.hasAttribute('data-edit')) keys.add(el.getAttribute('data-edit'))
     if (el.hasAttribute('data-edit-wa')) { keys.add(el.getAttribute('data-edit-wa')); keys.add('contato.whatsapp') }

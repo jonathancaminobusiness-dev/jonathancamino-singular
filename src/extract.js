@@ -1,3 +1,5 @@
+import { collectEditEls } from './edit-attrs.js'
+
 // Escreve um valor num caminho pontilhado, criando objetos/arrays conforme as chaves.
 export function setPath(obj, path, value) {
   const keys = path.split('.')
@@ -18,10 +20,7 @@ const WA_RE = /^https:\/\/wa\.me\/(\d+)\?text=(.*)$/
 
 export function extractContent(doc) {
   const out = {}
-  // Mesma seleção do applyContent: qualquer elemento com data-edit ou data-edit-*
-  const els = Array.from(doc.querySelectorAll('*')).filter(el =>
-    Array.from(el.attributes).some(a => a.name === 'data-edit' || a.name.startsWith('data-edit-'))
-  )
+  const els = collectEditEls(doc)
   for (const el of els) {
     if (el.hasAttribute('data-edit')) {
       setPath(out, el.getAttribute('data-edit'), el.innerHTML.trim())
