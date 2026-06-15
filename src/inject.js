@@ -48,10 +48,29 @@ function sanitize(doc, html) {
 }
 
 export function applyContent(doc, content) {
-  for (const el of doc.querySelectorAll('[data-edit]')) {
-    const key = el.getAttribute('data-edit')
-    const val = getPath(content, key)
-    if (val == null) continue
-    el.innerHTML = sanitize(doc, String(val))
+  const candidates = Array.from(doc.querySelectorAll('*')).filter(
+    el => Array.from(el.attributes).some(a => a.name === 'data-edit' || a.name.startsWith('data-edit-'))
+  )
+  for (const el of candidates) {
+    // texto / innerHTML
+    if (el.hasAttribute('data-edit')) {
+      const val = getPath(content, el.getAttribute('data-edit'))
+      if (val != null) el.innerHTML = sanitize(doc, String(val))
+    }
+    // link wa.me derivado
+    if (el.hasAttribute('data-edit-wa')) {
+      const msg = getPath(content, el.getAttribute('data-edit-wa'))
+      const num = getPath(content, 'contato.whatsapp')
+      if (msg != null && num != null) {
+        el.setAttribute('href', `https://wa.me/${num}?text=${encodeURIComponent(String(msg))}`)
+      }
+    }
+    // atributos genéricos data-edit-<attr> (exceto o caso especial -wa)
+    for (const attr of Array.from(el.attributes)) {
+      if (!attr.name.startsWith('data-edit-') || attr.name === 'data-edit-wa') continue
+      const target = attr.name.slice('data-edit-'.length) // ex.: "href", "src", "alt"
+      const val = getPath(content, attr.value)
+      if (val != null) el.setAttribute(target, String(val))
+    }
   }
 }

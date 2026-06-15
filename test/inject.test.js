@@ -82,3 +82,26 @@ describe('applyContent — segurança do sanitizador', () => {
     expect(d.querySelector('p').innerHTML).toBe('<b>t</b>')
   })
 })
+
+describe('applyContent — atributos', () => {
+  it('define atributos via data-edit-<attr>', () => {
+    const d = doc('<img data-edit-src="foto" data-edit-alt="legenda" src="" alt="">')
+    applyContent(d, { foto: 'assets/x.jpg', legenda: 'Foto X' })
+    const img = d.querySelector('img')
+    expect(img.getAttribute('src')).toBe('assets/x.jpg')
+    expect(img.getAttribute('alt')).toBe('Foto X')
+  })
+
+  it('define href diretamente via data-edit-href', () => {
+    const d = doc('<a data-edit-href="link" href="">x</a>')
+    applyContent(d, { link: 'https://ex.com' })
+    expect(d.querySelector('a').getAttribute('href')).toBe('https://ex.com')
+  })
+
+  it('monta link wa.me a partir de contato.whatsapp + mensagem', () => {
+    const d = doc('<a data-edit-wa="hero.msg" href="">x</a>')
+    applyContent(d, { contato: { whatsapp: '5521999' }, hero: { msg: 'Olá Rodrigo' } })
+    expect(d.querySelector('a').getAttribute('href'))
+      .toBe('https://wa.me/5521999?text=Ol%C3%A1%20Rodrigo')
+  })
+})
