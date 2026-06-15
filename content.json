@@ -1,0 +1,216 @@
+{
+  "seo": {
+    "titulo": "Singular · Consultoria em Seguros e Patrimônio · Rio de Janeiro",
+    "descricao": "Consultoria personalizada em seguros, investimentos, patrimônio e sucessão. Atendimento direto com Rodrigo Prevot, ex-gestor da MAG Seguros. Diagnóstico gratuito."
+  },
+  "contato": {
+    "instagram_label": "@singularcorretora",
+    "telefone_label": "(21) 96413-5156",
+    "whatsapp": "5521964135156"
+  },
+  "nav": {
+    "solucoes": "Soluções",
+    "sobre": "Quem somos",
+    "fundador": "Rodrigo Prevot",
+    "metodologia": "Metodologia",
+    "contato": "Contato"
+  },
+  "header": {
+    "cta_ghost": "Como funciona",
+    "cta_wa": "WhatsApp"
+  },
+  "mnav": {
+    "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
+    "cta": "Quero meu diagnóstico gratuito"
+  },
+  "hero": {
+    "titulo": "Seu seguro foi vendido pra você — ou <em>planejado com você</em>?",
+    "subtitulo": "Mais de uma década no mercado me ensinou uma verdade incômoda: a maioria das apólices protege a comissão, não a sua família. Na Singular é o contrário — primeiro a sua história, depois a solução.",
+    "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
+    "cta": "Quero meu diagnóstico gratuito",
+    "hint": "Mais de uma década no mercado · <b>ex-gestor da MAG Seguros</b> · atendimento direto com o fundador.",
+    "foto": "assets/rodrigo-ai.png",
+    "foto_alt": "Rodrigo Prevot, fundador da Singular"
+  },
+  "carta": {
+    "titulo": "Você já foi <span class=\"mark\">empurrado</span> a um seguro que nunca entendeu de verdade?",
+    "p1": "Eu vi isso acontecer centenas de vezes. Famílias pagando por anos uma apólice que <b>não cobria justamente o que importava</b> — e descobrindo isso no pior momento possível.",
+    "p2": "Passei mais de uma década por dentro do mercado financeiro e segurador, inclusive como gestor na MAG Seguros. E entendi uma verdade incômoda: <span class=\"mark\">a maioria das vendas é desenhada para a comissão</span>, não para a sua vida.",
+    "p3": "Cansei de ver gente boa sendo tratada como número. Foi por isso que criei a Singular — para inverter o jogo: <b>primeiro a sua história, depois a solução.</b> Nunca o contrário.",
+    "crenca": "Aqui ninguém assina nada sem entender. <em>Eu não vendo seguro — desenho a decisão certa com você.</em>",
+    "prova1": "Atendimento direto com o fundador, sem fila",
+    "prova2": "100% personalizado, zero pacote pronto",
+    "prova3": "Cada cláusula explicada antes de você decidir",
+    "assinatura_nome": "Rodrigo Prevot",
+    "assinatura_cargo": "Fundador da Singular · ex-gestor MAG Seguros",
+    "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
+    "cta": "Quero meu diagnóstico gratuito",
+    "cta_ghost": "Conheça o Rodrigo"
+  },
+  "video": {
+    "titulo": "Sua proteção atual foi <em>vendida</em> para você —<br class=\"vcta__br\"> ou foi <i>planejada</i> com você?",
+    "subtitulo": "Em dois minutos, Rodrigo Prevot explica a diferença — e por que ela pode custar caro para quem você ama.",
+    "poster": "assets/rodrigo-bw.jpg",
+    "arquivo": "assets/vsl-rodrigo.mp4",
+    "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
+    "cta": "Quero meu diagnóstico gratuito",
+    "micro1": "Sem compromisso",
+    "micro2": "Resposta do próprio fundador",
+    "micro3": "100% personalizado"
+  },
+  "frentes": {
+    "titulo": "Os dois lados da sua tranquilidade.",
+    "subtitulo": "Proteger pessoas e proteger patrimônio são frentes que conversam entre si — e na Singular elas vivem dentro do mesmo plano.",
+    "cards": [
+      {
+        "tag": "Para você e sua família",
+        "titulo": "Proteção pessoal",
+        "texto": "Seguro de vida, plano de saúde e seguro viagem — coberturas que garantem o padrão de vida de quem depende de você, em qualquer cenário.",
+        "botao": "Ver soluções"
+      },
+      {
+        "tag": "Para seu patrimônio",
+        "titulo": "Patrimônio &amp; sucessão",
+        "texto": "Investimentos com análise de perfil de risco e blindagem patrimonial — o que você construiu, protegido e organizado para o seu legado.",
+        "botao": "Ver soluções"
+      },
+      {
+        "tag": "Para sua empresa",
+        "titulo": "Gestão de riscos empresariais",
+        "texto": "Além das soluções individuais, proteção para sócios, operações e continuidade do negócio — porque a empresa também faz parte da sua história.",
+        "botao_msg": "Olá Rodrigo, quero falar sobre proteção para minha empresa.",
+        "botao": "Falar sobre minha empresa"
+      }
+    ]
+  },
+  "solucoes": {
+    "titulo": "Seis frentes para proteger o que importa.",
+    "subtitulo": "Soluções integradas, pensadas para a vida real e revisadas conforme ela muda.",
+    "cards": [
+      {
+        "foto": "assets/sol-vida.jpg",
+        "foto_alt": "Grupo unido de pessoas — Seguro de Vida",
+        "titulo": "Seguro de Vida",
+        "texto": "Proteção imediata para quem depende de você.",
+        "msg": "Olá Rodrigo, quero falar sobre Seguro de Vida."
+      },
+      {
+        "foto": "assets/sol-saude.jpg",
+        "foto_alt": "Estetoscópio — Plano de Saúde",
+        "titulo": "Plano de Saúde",
+        "texto": "Rede médica de qualidade com a assessoria Singular.",
+        "msg": "Olá Rodrigo, quero falar sobre Plano de Saúde."
+      },
+      {
+        "foto": "assets/sol-viagem.jpg",
+        "foto_alt": "Asa de avião — Seguro Viagem",
+        "titulo": "Seguro Viagem",
+        "texto": "Assistência completa, onde quer que você esteja.",
+        "msg": "Olá Rodrigo, quero falar sobre Seguro Viagem."
+      },
+      {
+        "foto": "assets/sol-invest.jpg",
+        "foto_alt": "Gráficos de mercado — Investimentos",
+        "titulo": "Investimentos",
+        "texto": "Alocação estratégica com análise de perfil de risco. Seu patrimônio trabalhando a seu favor.",
+        "msg": "Olá Rodrigo, quero falar sobre Investimentos."
+      },
+      {
+        "foto": "assets/sol-blind.jpg",
+        "foto_alt": "Blindagem Jurídica — proteção contra riscos processuais",
+        "titulo": "Blindagem Jurídica",
+        "texto": "Proteção contra riscos processuais e judicialização.",
+        "msg": "Olá Rodrigo, quero falar sobre Blindagem Jurídica."
+      },
+      {
+        "foto": "assets/sol-emp.jpg",
+        "foto_alt": "Equipe em reunião — Gestão de Riscos Empresariais",
+        "titulo": "Gestão de Riscos Empresariais",
+        "texto": "Proteção para sócios, operações e continuidade do negócio.",
+        "msg": "Olá Rodrigo, quero falar sobre Gestão de Riscos Empresariais."
+      }
+    ]
+  },
+  "diferenciais": {
+    "titulo": "Diferenciais que você sente na primeira conversa.",
+    "cards": [
+      {
+        "titulo": "Humanidade Técnica",
+        "itens": [
+          "Atendimento direto comigo, o fundador — sem call center e sem fila",
+          "Cada cobertura, cláusula e exclusão explicada antes de você assinar",
+          "Linguagem clara, sem \"segurês\" — você decide entendendo de verdade"
+        ]
+      },
+      {
+        "titulo": "Personalização Extrema",
+        "itens": [
+          "Começo pelo diagnóstico do seu perfil, patrimônio e objetivos — nunca por um produto de prateleira",
+          "Comparo opções de [PREENCHER: nº] seguradoras e recomendo a melhor pra você, não a que me paga mais",
+          "Reviso seu plano quando a vida muda: casamento, filhos, empresa, sucessão"
+        ]
+      },
+      {
+        "titulo": "Transparência Total",
+        "itens": [
+          "Condições, exclusões e custos por escrito antes de contratar — zero letra miúda",
+          "Sem venda sob pressão: se não fizer sentido pra você, eu te digo",
+          "[PREENCHER: prova concreta — ex.: nº de famílias atendidas ou anos exatos de atuação]"
+        ]
+      }
+    ]
+  },
+  "metodologia": {
+    "titulo": "A Metodologia Singular.",
+    "subtitulo": "Um método em quatro etapas que transforma incerteza em um plano claro — e acompanha a evolução da sua vida.",
+    "passos": [
+      {
+        "titulo": "Diagnóstico",
+        "texto": "Entrevista consultiva para mapear perfil, dores e objetivos. Tudo começa por escutar."
+      },
+      {
+        "titulo": "Planejamento",
+        "texto": "Estratégia singular com as coberturas e estruturas tributárias ideais para o seu momento."
+      },
+      {
+        "titulo": "Implementação",
+        "texto": "Contratação orientada, com esclarecimento de cada cláusula. Você entende o que contrata."
+      },
+      {
+        "titulo": "Monitoramento",
+        "texto": "Revisão periódica para ajustar a proteção à evolução da sua vida. Um plano vivo."
+      }
+    ]
+  },
+  "fundador": {
+    "foto": "assets/rodrigo-bw.jpg",
+    "foto_alt": "Rodrigo Prevot, fundador da Singular",
+    "titulo": "Rodrigo Prevot",
+    "cargo": "Fundador &amp; Consultor Estratégico",
+    "texto": "Mais de uma década no mercado financeiro e de seguros, com passagem como gestor na MAG Seguros. Rodrigo fundou a Singular para fazer o que poucos fazem: colocar o cliente — e não o produto — no centro de cada decisão.",
+    "citacao": "Meu papel não é convencê-lo a adquirir um seguro. É garantir que você tome a melhor decisão para proteger quem você ama.",
+    "citacao_assinatura": "Rodrigo Prevot",
+    "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
+    "cta": "Quero meu diagnóstico gratuito"
+  },
+  "cta_final": {
+    "titulo": "Sua história é singular.<br><em>Sua proteção também deve ser.</em>",
+    "subtitulo": "Comece com uma conversa. Sem compromisso e sem venda — apenas clareza sobre as melhores decisões para proteger quem você ama.",
+    "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
+    "cta": "Quero meu diagnóstico gratuito",
+    "instagram_link": "https://instagram.com/singularcorretora",
+    "instagram_label": "Falar pelo Instagram",
+    "nota": "Atendimento por WhatsApp ·",
+    "nota_link": "https://wa.me/5521964135156",
+    "nota_tel": "(21) 96413-5156"
+  },
+  "rodape": {
+    "bio": "Consultoria estratégica em seguros, investimentos, patrimônio e sucessão. Proteção desenhada para a sua história.",
+    "local": "Rio de Janeiro · RJ",
+    "copyright": "© 2026 Singular Corretora de Seguros. Todos os direitos reservados.",
+    "tagline": "Método claro. Proteção com propósito."
+  },
+  "float": {
+    "msg": "Olá Rodrigo, vim pelo site e quero uma consultoria Singular."
+  }
+}
