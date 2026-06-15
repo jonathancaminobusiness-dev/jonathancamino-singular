@@ -17,7 +17,7 @@ export function getPath(obj, path) {
 }
 
 // Remove recursivamente tags fora da allowlist, preservando o texto e as tags válidas.
-function sanitize(doc, html) {
+export function sanitize(doc, html) {
   const tpl = doc.createElement('template')
   tpl.innerHTML = html
   const walk = (node) => {
