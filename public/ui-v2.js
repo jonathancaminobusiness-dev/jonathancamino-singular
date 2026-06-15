@@ -22,20 +22,6 @@
     });
   }
 
-  /* ---------- Busca do hero → WhatsApp ---------- */
-  var hs = document.getElementById('heroSearch');
-  if (hs) {
-    hs.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var inp = document.getElementById('heroQ');
-      var q = (inp && inp.value || '').trim();
-      var msg = q
-        ? 'Olá Rodrigo, vim pelo site. Quero proteger: ' + q
-        : 'Olá Rodrigo, vim pelo site e quero uma consultoria Singular.';
-      window.open('https://wa.me/5521964135156?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-    });
-  }
-
   /* ---------- Vídeo CTA: toca/pausa conforme o foco da seção ----------
      Em foco  → reproduz (mudo por padrão; usuário ativa o som).
      Fora     → pausa (corta o som).

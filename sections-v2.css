@@ -27,6 +27,7 @@
   transition:transform .25s, background .25s; }
 .hero__search button:hover{ transform:scale(1.06); background:var(--green-deep); }
 .hero__search button svg{ width:22px; height:22px; }
+.hero__cta{ margin-top:32px; }
 .hero__hint{ margin-top:12px; font-size:.83rem; color:var(--muted); }
 .hero__hint b{ color:var(--green-deep); }
 
