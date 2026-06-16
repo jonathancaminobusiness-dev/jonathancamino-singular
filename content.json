@@ -24,7 +24,7 @@
     "cta": "Quero meu diagnóstico gratuito"
   },
   "hero": {
-    "titulo": "Seu seguro foi vendido pra você — ou <em>planejado com você</em>?",
+    "titulo": "Seu seguro foi vendido pra você — ou <em>planejado com você</em>?sss",
     "subtitulo": "Mais de uma década no mercado me ensinou uma verdade incômoda: a maioria das apólices protege a comissão, não a sua família. Na Singular é o contrário — primeiro a sua história, depois a solução.",
     "cta_msg": "Olá Rodrigo, vim pelo site e quero meu diagnóstico gratuito.",
     "cta": "Quero meu diagnóstico gratuito",
@@ -48,7 +48,7 @@
     "cta_ghost": "Conheça o Rodrigo"
   },
   "video": {
-    "titulo": "Sua proteção atual foi <em>vendida</em> para você —<br class=\"vcta__br\"> ou foi <i>planejada</i> com você?",
+    "titulo": "Sua proteção atual foi <em>vendida</em> para você —<br> ou foi <em>planejada</em> com você?",
     "subtitulo": "Em dois minutos, Rodrigo Prevot explica a diferença — e por que ela pode custar caro para quem você ama.",
     "poster": "assets/rodrigo-bw.jpg",
     "arquivo": "assets/vsl-rodrigo.mp4",
