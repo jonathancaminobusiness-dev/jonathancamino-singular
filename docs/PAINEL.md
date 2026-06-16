@@ -57,7 +57,7 @@ Cada botão tem apenas o campo da **mensagem pré-preenchida** — o número em 
 
 1. Expanda a seção que contém a imagem que deseja trocar.
 2. Clique no botão **Trocar imagem** abaixo da foto atual.
-3. Selecione o arquivo no seu computador. Formatos aceitos: **jpg, png, webp**. Tamanho máximo: **4 MB**.
+3. Selecione o arquivo no seu computador. Formatos aceitos: **jpg, png, webp**. Tamanho máximo: **3 MB**.
 4. A nova imagem aparece na prévia ao vivo imediatamente.
 5. Clique em **Publicar** para tornar a troca permanente no site.
 
