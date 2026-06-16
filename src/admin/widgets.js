@@ -32,7 +32,7 @@ export function createWidget(field, state) {
         const resp = await uploadImage(f.name, dataBase64)
         state.setKey(field.key, resp.path)
         cur.textContent = resp.path
-      } catch (e) { err.textContent = 'Erro no upload: ' + e.message }
+      } catch (e) { err.textContent = e.message === 'NOT_AUTH' ? 'Sessão expirada — recarregue para entrar de novo.' : 'Erro no upload: ' + e.message }
       finally { btn.disabled = false; btn.textContent = 'Trocar imagem' }
     })
     wrap.append(cur, btn, file, err)

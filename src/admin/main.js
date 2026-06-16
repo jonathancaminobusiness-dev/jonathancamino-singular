@@ -22,7 +22,8 @@ async function boot() {
   const publicar = mk('Publicar', async () => {
     publicar.disabled = true; flash('Publicando…')
     try { await save(state.get()); clearDraft(); flash('Publicado! No ar em ~1 min.') }
-    catch (e) { flash('Erro: ' + e.message) } finally { publicar.disabled = false }
+    catch (e) { flash(e.message === 'NOT_AUTH' ? 'Sessão expirada — recarregue a página para entrar de novo (seu rascunho está salvo).' : 'Erro: ' + e.message) }
+    finally { publicar.disabled = false }
   }, 'pa-pub')
   bar.append(publicar,
     mk('Salvar rascunho', () => { saveDraft(state); flash('Rascunho salvo') }),
