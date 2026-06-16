@@ -5,7 +5,9 @@ const SIGS = [
   { type: 'jpg', bytes: [0xff, 0xd8, 0xff] },
   { type: 'webp', bytes: [0x52, 0x49, 0x46, 0x46] },
 ]
-const MAX = 4 * 1024 * 1024
+// 3MB no buffer decodificado: em base64 (+33%) o corpo da request fica ~4MB,
+// abaixo do limite de body das funções do Vercel (~4.5MB).
+const MAX = 3 * 1024 * 1024
 
 export function sniffImage(buf) {
   if (!Buffer.isBuffer(buf) || buf.length > MAX) return null

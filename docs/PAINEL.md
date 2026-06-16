@@ -127,6 +127,7 @@ Pronto: ao acessar `/admin.html`, o sistema pedirá a senha configurada.
 
 ## Observacoes de seguranca
 
+- **Use uma senha forte** (16+ caracteres ou uma frase-senha). O login tem um atraso por tentativa para dificultar ataques de força bruta, mas a proteção real vem de uma senha difícil de adivinhar.
 - A senha nunca fica armazenada em texto simples — apenas o hash é guardado na variável de ambiente.
 - O token do GitHub fica exclusivamente nas variáveis de ambiente do Vercel, nunca no código do repositório.
 - **Para trocar a senha:** gere um novo hash com `node scripts/hash-password.mjs "nova-senha"` e atualize o valor de `ADMIN_PASSWORD_HASH` no Vercel, depois faça redeploy.
