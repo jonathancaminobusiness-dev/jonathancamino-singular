@@ -17,7 +17,7 @@ export function getPath(obj, path) {
 }
 
 // Remove recursivamente tags fora da allowlist, preservando o texto e as tags válidas.
-function sanitize(doc, html) {
+export function sanitize(doc, html) {
   const tpl = doc.createElement('template')
   tpl.innerHTML = html
   const walk = (node) => {
@@ -50,8 +50,8 @@ function sanitize(doc, html) {
 }
 
 // Bloqueia esquemas perigosos em href/src (javascript:, vbscript:, data:text/html).
-function isUnsafeUrl(val) {
-  const s = String(val).trim().toLowerCase().replace(/[ -]/g, '')
+export function isUnsafeUrl(val) {
+  const s = String(val).trim().toLowerCase().replace(/[\s-]/g, '')
   return /^(javascript|vbscript):/.test(s) || /^data:text\/html/.test(s)
 }
 
