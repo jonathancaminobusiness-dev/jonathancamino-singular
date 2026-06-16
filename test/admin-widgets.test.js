@@ -24,11 +24,16 @@ describe('createWidget', () => {
     input.dispatchEvent(new dom.window.Event('input'))
     expect(s.getKey('x.link')).toBe('https://a') // não atualizou (bloqueado)
   })
-  it('campo image: somente leitura, mostra o caminho atual', () => {
+  it('campo image: mostra caminho atual e botão de upload', () => {
     const s = createState({ hero: { foto: 'assets/r.png' } })
     const el = createWidget({ key: 'hero.foto', label: 'Foto', type: 'image' }, s)
     expect(el.textContent).toContain('assets/r.png')
-    expect(el.querySelector('input')).toBeNull() // sem edição nesta fase
+    const fileInput = el.querySelector('input[type="file"]')
+    expect(fileInput).not.toBeNull() // input de upload presente
+    expect(fileInput.accept).toBe('image/*')
+    const uploadBtn = el.querySelector('button.pa-upload')
+    expect(uploadBtn).not.toBeNull()
+    expect(uploadBtn.textContent).toBe('Trocar imagem')
   })
   it('campo label aparece', () => {
     const s = createState({ hero: { cta: 'a' } })
