@@ -97,7 +97,8 @@ function focus(item) {
     const t = Math.min(Math.abs(c - center) / reach, 1)
     s.style.transform =
       'scale(' + (1 - t * 0.07).toFixed(3) + ') translateY(' + (t * 6).toFixed(1) + 'px)'
-    s.style.opacity = (1 - t * 0.42).toFixed(3)
+    // sem fade de opacidade: slides vizinhos esmaecidos reprovavam contraste AA
+    // (texto a ~58% sobre fundo claro). O foco fica só pela escala/recuo.
   })
 }
 
