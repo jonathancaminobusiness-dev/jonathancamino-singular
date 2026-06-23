@@ -48,7 +48,10 @@
 <!-- ===================== FONTES / ESTILOS ===================== -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+<!-- fontes carregadas sem bloquear a renderização (swap p/ fallback do sistema) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" /></noscript>
 <link rel="stylesheet" href="brand-v2.css" />
 <link rel="stylesheet" href="sections-v2.css" />
 </head>
@@ -77,7 +80,7 @@
 <header class="hdr" id="hdr">
   <div class="wrap">
     <a class="hdr__logo" href="#top" aria-label="Singular — página inicial">
-      <img src="assets/logo-mag.png" alt="Singular" />
+      <img src="assets/logo-mag.png" alt="Singular" width="300" height="382" decoding="async" />
     </a>
     <nav class="hdr__nav">
       <a href="#solucoes" data-edit="nav.solucoes">Soluções</a>
@@ -134,7 +137,7 @@
           <path d="M300 214 L376 258 L376 342 L300 386 L224 342 L224 258 Z" stroke="var(--accent)" stroke-width="9" opacity="0.95"></path>
         </g>
       </svg>
-      <img class="hero__cut" src="assets/rodrigo-ai.png" alt="Rodrigo Prevot, fundador da Singular" data-edit-src="hero.foto" data-edit-alt="hero.foto_alt" />
+      <img class="hero__cut" src="assets/rodrigo-ai.png" alt="Rodrigo Prevot, fundador da Singular" width="518" height="611" decoding="async" fetchpriority="high" data-edit-src="hero.foto" data-edit-alt="hero.foto_alt" />
     </div>
   </div>
   <div class="hero__wave" aria-hidden="true">
@@ -151,7 +154,7 @@
   <div class="tex" aria-hidden="true"></div>
   <div class="wrap">
     <div class="letter__card reveal">
-      <span class="letter__mark" aria-hidden="true"><img src="assets/mark-green.png" alt="" /></span>
+      <span class="letter__mark" aria-hidden="true"><img src="assets/mark-green.png" alt="" width="220" height="280" loading="lazy" decoding="async" /></span>
 
       <div class="letter__body">
         <h2 class="letter__hl reveal" data-d="1" data-edit="carta.titulo">Você já foi <span class="mark">empurrado</span> a um seguro que nunca entendeu de verdade?</h2>
@@ -274,7 +277,7 @@
         <span class="fcard__stat"><span class="hexb"></span> 100% personalizado, nada de pacote pronto</span>
       </article>
       <article class="fcard fcard--wide reveal" data-d="2">
-        <div class="fcard__photo" aria-hidden="true"><img src="assets/rodrigo-bw.jpg" alt="" /></div>
+        <div class="fcard__photo" aria-hidden="true"><img src="assets/rodrigo-bw.jpg" alt="" width="1100" height="700" loading="lazy" decoding="async" /></div>
         <span class="fcard__tag" data-edit="frentes.cards.2.tag">Para sua empresa</span>
         <h3 data-edit="frentes.cards.2.titulo">Gestão de riscos empresariais</h3>
         <p data-edit="frentes.cards.2.texto">Além das soluções individuais, proteção para sócios, operações e continuidade do negócio — porque a empresa também faz parte da sua história.</p>
@@ -297,7 +300,7 @@
     <div class="solu__grid" data-carousel>
       <article class="solucard solucard--vida reveal">
         <div class="solucard__photo">
-          <img src="assets/sol-vida.jpg" alt="Grupo unido de pessoas — Seguro de Vida" data-edit-src="solucoes.cards.0.foto" data-edit-alt="solucoes.cards.0.foto_alt" />
+          <img src="assets/sol-vida.jpg" alt="Grupo unido de pessoas — Seguro de Vida" width="760" height="427" loading="lazy" decoding="async" data-edit-src="solucoes.cards.0.foto" data-edit-alt="solucoes.cards.0.foto_alt" />
           <span class="solucard__tint" aria-hidden="true"></span>
           <span class="solucard__veil" aria-hidden="true"></span>
           <span class="solucard__n">01</span>
@@ -310,7 +313,7 @@
       </article>
       <article class="solucard solucard--saude reveal" data-d="1">
         <div class="solucard__photo">
-          <img src="assets/sol-saude.jpg" alt="Estetoscópio — Plano de Saúde" data-edit-src="solucoes.cards.1.foto" data-edit-alt="solucoes.cards.1.foto_alt" />
+          <img src="assets/sol-saude.jpg" alt="Estetoscópio — Plano de Saúde" width="760" height="507" loading="lazy" decoding="async" data-edit-src="solucoes.cards.1.foto" data-edit-alt="solucoes.cards.1.foto_alt" />
           <span class="solucard__tint" aria-hidden="true"></span>
           <span class="solucard__veil" aria-hidden="true"></span>
           <span class="solucard__n">02</span>
@@ -323,7 +326,7 @@
       </article>
       <article class="solucard solucard--viagem reveal" data-d="2">
         <div class="solucard__photo">
-          <img src="assets/sol-viagem.jpg" alt="Asa de avião — Seguro Viagem" data-edit-src="solucoes.cards.2.foto" data-edit-alt="solucoes.cards.2.foto_alt" />
+          <img src="assets/sol-viagem.jpg" alt="Asa de avião — Seguro Viagem" width="760" height="505" loading="lazy" decoding="async" data-edit-src="solucoes.cards.2.foto" data-edit-alt="solucoes.cards.2.foto_alt" />
           <span class="solucard__tint" aria-hidden="true"></span>
           <span class="solucard__veil" aria-hidden="true"></span>
           <span class="solucard__n">03</span>
@@ -336,7 +339,7 @@
       </article>
       <article class="solucard solucard--invest reveal">
         <div class="solucard__photo">
-          <img src="assets/sol-invest.jpg" alt="Gráficos de mercado — Investimentos" data-edit-src="solucoes.cards.3.foto" data-edit-alt="solucoes.cards.3.foto_alt" />
+          <img src="assets/sol-invest.jpg" alt="Gráficos de mercado — Investimentos" width="760" height="507" loading="lazy" decoding="async" data-edit-src="solucoes.cards.3.foto" data-edit-alt="solucoes.cards.3.foto_alt" />
           <span class="solucard__tint" aria-hidden="true"></span>
           <span class="solucard__veil" aria-hidden="true"></span>
           <span class="solucard__n">04</span>
@@ -349,7 +352,7 @@
       </article>
       <article class="solucard solucard--blind reveal" data-d="1">
         <div class="solucard__photo">
-          <img src="assets/sol-blind.jpg" alt="Blindagem Jurídica — proteção contra riscos processuais" data-edit-src="solucoes.cards.4.foto" data-edit-alt="solucoes.cards.4.foto_alt" />
+          <img src="assets/sol-blind.jpg" alt="Blindagem Jurídica — proteção contra riscos processuais" width="760" height="508" loading="lazy" decoding="async" data-edit-src="solucoes.cards.4.foto" data-edit-alt="solucoes.cards.4.foto_alt" />
           <span class="solucard__tint" aria-hidden="true"></span>
           <span class="solucard__veil" aria-hidden="true"></span>
           <span class="solucard__n">05</span>
@@ -362,7 +365,7 @@
       </article>
       <article class="solucard solucard--emp reveal" data-d="2">
         <div class="solucard__photo">
-          <img src="assets/sol-emp.jpg" alt="Equipe em reunião — Gestão de Riscos Empresariais" data-edit-src="solucoes.cards.5.foto" data-edit-alt="solucoes.cards.5.foto_alt" />
+          <img src="assets/sol-emp.jpg" alt="Equipe em reunião — Gestão de Riscos Empresariais" width="760" height="507" loading="lazy" decoding="async" data-edit-src="solucoes.cards.5.foto" data-edit-alt="solucoes.cards.5.foto_alt" />
           <span class="solucard__tint" aria-hidden="true"></span>
           <span class="solucard__veil" aria-hidden="true"></span>
           <span class="solucard__n">06</span>
@@ -444,7 +447,7 @@
     <span class="rstage__frame" aria-hidden="true"></span>
     <span class="rstage__frame rstage__frame--2" aria-hidden="true"></span>
     <div class="rstage__hex">
-      <img src="assets/rodrigo-bw.jpg" alt="Rodrigo Prevot, fundador da Singular" data-edit-src="fundador.foto" data-edit-alt="fundador.foto_alt" />
+      <img src="assets/rodrigo-bw.jpg" alt="Rodrigo Prevot, fundador da Singular" width="1100" height="700" loading="lazy" decoding="async" data-edit-src="fundador.foto" data-edit-alt="fundador.foto_alt" />
     </div>
   </div>
   <div class="wrap">
@@ -476,7 +479,7 @@
     <div class="cta__panel reveal">
       <div class="tex tex--card" aria-hidden="true"></div>
       <div class="cta__inner">
-      <img class="cta__mark hex reveal" src="assets/mark-white.png" alt="" aria-hidden="true" />
+      <img class="cta__mark hex reveal" src="assets/mark-white.png" alt="" aria-hidden="true" width="220" height="280" loading="lazy" decoding="async" />
       <h2 class="reveal" data-d="1" data-edit="cta_final.titulo">Sua história é singular.<br /><em>Sua proteção também deve ser.</em></h2>
       <p class="cta__sub reveal" data-d="2" data-edit="cta_final.subtitulo">Comece com uma conversa. Sem compromisso e sem venda — apenas clareza sobre as melhores decisões para proteger quem você ama.</p>
       <div class="cta__btns reveal" data-d="2">
@@ -499,7 +502,7 @@
   <div class="wrap">
     <div class="ft__top">
       <div class="ft__brand">
-        <div class="ft__logo"><img src="assets/logo-white.png" alt="Singular" /></div>
+        <div class="ft__logo"><img src="assets/logo-white.png" alt="Singular" width="440" height="111" loading="lazy" decoding="async" /></div>
         <p class="ft__bl" data-edit="rodape.bio">Consultoria estratégica em seguros, investimentos, patrimônio e sucessão. Proteção desenhada para a sua história.</p>
       </div>
       <div class="ft__col">
