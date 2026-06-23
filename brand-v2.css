@@ -59,7 +59,9 @@ body{
   text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
-img{ display:block; max-width:100%; }
+/* height:auto pareado com os atributos width/height evita esticamento quando o
+   CSS controla a largura (mantém a proporção natural; corrige image-aspect-ratio) */
+img{ display:block; max-width:100%; height:auto; }
 a{ color:inherit; text-decoration:none; }
 button{ font-family:inherit; cursor:pointer; }
 
