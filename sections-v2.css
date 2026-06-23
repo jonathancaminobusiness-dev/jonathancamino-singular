@@ -141,7 +141,7 @@
 
 .btn--light{ background:#fff; color:var(--royal); box-shadow:0 10px 22px -12px rgba(0,5,45,.4); }
 .btn--light:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -14px rgba(0,5,45,.5); }
-.fcard--green .btn--light{ color:var(--green-deep); }
+.fcard--green .btn--light{ color:#0A7D49; } /* verde acessível em branco (5:1) */
 .fcard--wide .btn--light{ color:var(--navy); }
 
 /* ===================== SOLUÇÕES ===================== */
