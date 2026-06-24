@@ -16,6 +16,7 @@ export default async function handler(req, res) {
     await putFile(`public/${path}`, buf, `upload de imagem: ${name}`)
     return res.status(200).json({ path })
   } catch (e) {
-    return res.status(502).json({ error: 'falha no upload: ' + e.message })
+    console.error('[upload] erro ao commitar no GitHub:', e.message)
+    return res.status(502).json({ error: 'falha no upload' })
   }
 }
