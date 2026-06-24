@@ -116,10 +116,9 @@ section[id]{ scroll-margin-top:96px; }
   white-space:nowrap; line-height:1;
 }
 .btn svg{ width:18px; height:18px; flex:0 0 auto; }
-/* verde escurecido p/ contraste AA (texto branco 5.2:1) — mantém identidade verde */
-.btn--wa{ background:#0A7D49; color:#fff;
+.btn--wa{ background:var(--green); color:#fff;
   box-shadow:0 10px 24px -10px rgba(17,192,113,.7); }
-.btn--wa:hover{ transform:translateY(-2px); background:#08703D;
+.btn--wa:hover{ transform:translateY(-2px); background:var(--green-deep);
   box-shadow:0 16px 32px -12px rgba(17,192,113,.75); }
 .btn--royal{ background:var(--royal); color:#fff; box-shadow:0 10px 24px -10px rgba(0,93,229,.6); }
 .btn--royal:hover{ transform:translateY(-2px); background:var(--deep); }
